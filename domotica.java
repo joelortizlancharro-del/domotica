@@ -19,7 +19,7 @@ public class domotica {
    
 Scanner escaner = new Scanner(System.in);
  String queFer, queFerLlums, quinaHabitacio, queFerTemperatura, queFerFinestre, queFerVentilador, queFerAltaveu;
-  boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio, calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo;
+  boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio, calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo, encendreApagarFinestres, finestresCuina, finestresSalaEstar, finestresLavabo, finestresHabitacioUn, finestresHabitacioDos, finestresHabitacioTres, encendreApagarVentilador, ventiladorCuina, ventiladorSalaEstar, ventiladorLavabo, ventiladorHabitacioUn, ventiladorHabitacioDos, ventiladorHabitacioTres, encendreApagarAltaveus, altaveuCuina, altaveuSalaEstar, altaveuLavabo, altaveuHabitacioUn, altaveuHabitacioDos, altaveuHabitacioTres;
  
 
   encendreApagarLlums= false; //canviar
@@ -37,6 +37,30 @@ Scanner escaner = new Scanner(System.in);
   calefaccioHabitacioUn = false;
   calefaccioLavabo = false;
   calefaccioSalaEstar = false;
+
+  encendreApagarFinestres = false;
+  finestresSalaEstar = false;
+  finestresCuina = false;
+  finestresHabitacioUn = false;
+  finestresHabitacioDos = false;
+  finestresHabitacioTres = false;
+  finestresLavabo = false;
+
+  encendreApagarAltaveus = false;
+  altaveuCuina = false;
+  altaveuLavabo = false;
+  altaveuSalaEstar = false;
+  altaveuHabitacioUn = false;
+  altaveuHabitacioDos = false;
+  altaveuHabitacioTres = false;
+
+  encendreApagarVentilador = false;
+  ventiladorCuina = false;
+  ventiladorLavabo= false;
+  ventiladorSalaEstar = false;
+  ventiladorHabitacioUn = false;
+  ventiladorHabitacioDos = false;
+  ventiladorHabitacioTres = false;
 
 
 
@@ -274,8 +298,98 @@ do{ //aqui diem que dispositiu volem utilitzar
 
                 queFerFinestre = escaner.next();
 
-                break;
+                  switch (queFerFinestre) { //aqui selecciones 1 habitació
+                    case "a":
 
+                       habitaciones();
+                       quinaHabitacio = escaner.nextLine();
+                      
+                       switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
+                        case "a":
+                           System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                           finestresSalaEstar = escaner.nextBoolean();
+                           escaner.nextLine(); 
+                            break;
+                       
+                        case "b":
+                         System.out.println("Vols encendre el dispositiu de la cuina?");
+                           finestresCuina = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "c":
+                          System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                           finestresHabitacioUn = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "d":
+                          System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                           finestresHabitacioDos = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "e":
+                          System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                           finestresHabitacioTres = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "f":
+                          System.out.println("Vols encendre el dispositiu del lavabo?");
+                           finestresLavabo = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+                        default:
+                            break;
+                       }
+                    
+                    case "b": //Aqui mirem totes les habitacions
+
+                       System.out.println("Vols controlar totes les habitacions. ");
+                       System.out.println("Vols encendre totes les finestres? (true/false)"); //crear boolean 
+                       encendreApagarFinestres = escaner.nextBoolean();
+                       escaner.nextLine();
+
+                       break;
+
+                    case "c": //aqui mirem el estat de les habitacions
+            
+                    if (encendreApagarFinestres == true){
+                        finestresSalaEstar = true;
+                        finestresCuina = true;
+                        finestresHabitacioUn = true;
+                        finestresHabitacioDos = true;
+                        finestresHabitacioTres = true;
+                        finestresLavabo = true;
+                    }
+                       System.out.println("Vols veure el estat actual de les habitacions. ");
+                       System.out.println("Els estats son:");
+                       System.out.println("Sala de estar: " + finestresSalaEstar);
+                       System.out.println("Cuina: " + finestresCuina);
+                       System.out.println("Habitació 1: " + finestresHabitacioUn);
+                       System.out.println("Habitació 2: " + finestresHabitacioDos);
+                       System.out.println("Habitació 3: " + finestresHabitacioTres);
+                       System.out.println("Lavabo: " + finestresLavabo);
+
+                      break;
+
+                    case "x":
+                    
+                    System.out.println("Sortint ");
+
+                    default:
+                        break;
+                }
+
+            break; //aqui acaba la temperatura
+        
+
+         
+         
+         
+         
+         
             case "d":
             
                 System.out.println("Vols canviar ventiladors, quina opció vols ara? ");
@@ -286,7 +400,91 @@ do{ //aqui diem que dispositiu volem utilitzar
 
                 queFerVentilador = escaner.next();
 
-                break;
+             switch (queFerVentilador) { //aqui selecciones 1 habitació
+                    case "a":
+
+                       habitaciones();
+                       quinaHabitacio = escaner.nextLine();
+                      
+                       switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
+                        case "a":
+                           System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                           ventiladorSalaEstar = escaner.nextBoolean();
+                           escaner.nextLine(); 
+                            break;
+                       
+                        case "b":
+                         System.out.println("Vols encendre el dispositiu de la cuina?");
+                           ventiladorCuina = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "c":
+                          System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                           ventiladorHabitacioUn = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "d":
+                          System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                           ventiladorHabitacioDos = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "e":
+                          System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                           ventiladorHabitacioTres = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "f":
+                          System.out.println("Vols encendre el dispositiu del lavabo?");
+                           ventiladorLavabo = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+                        default:
+                            break;
+                       }
+                    
+                    case "b": //Aqui mirem totes les habitacions
+
+                       System.out.println("Vols controlar totes les habitacions. ");
+                       System.out.println("Vols encendre tots els ventiladors? (true/false)"); //crear boolean 
+                       encendreApagarVentilador = escaner.nextBoolean();
+                       escaner.nextLine();
+
+                       break;
+
+                    case "c": //aqui mirem el estat de les habitacions
+            
+                    if (encendreApagarVentilador == true){
+                        ventiladorCuina = true;
+                        ventiladorLavabo = true;
+                        ventiladorSalaEstar = true;
+                        ventiladorHabitacioUn = true;
+                        ventiladorHabitacioDos = true;
+                        ventiladorHabitacioTres = true;
+                    }
+                       System.out.println("Vols veure el estat actual de les habitacions. ");
+                       System.out.println("Els estats son:");
+                       System.out.println("Sala de estar: " + ventiladorSalaEstar);
+                       System.out.println("Cuina: " + ventiladorCuina);
+                       System.out.println("Habitació 1: " + ventiladorHabitacioUn);
+                       System.out.println("Habitació 2: " + ventiladorHabitacioDos);
+                       System.out.println("Habitació 3: " + ventiladorHabitacioTres);
+                       System.out.println("Lavabo: " + ventiladorLavabo);
+
+                      break;
+
+                    case "x":
+                    
+                    System.out.println("Sortint ");
+
+                    default:
+                        break;
+                }
+
+            break; //aqui acaba la temperatura
 
             case "e":
 
@@ -297,6 +495,94 @@ do{ //aqui diem que dispositiu volem utilitzar
                 System.out.println(" x) Sortir. ");
 
                 queFerAltaveu = escaner.next();
+
+
+                             switch (queFerAltaveu) { //aqui selecciones 1 habitació
+                    case "a":
+
+                       habitaciones();
+                       quinaHabitacio = escaner.nextLine();
+                      
+                       switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
+                        case "a":
+                           System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                           altaveuSalaEstar = escaner.nextBoolean();
+                           escaner.nextLine(); 
+                            break;
+                       
+                        case "b":
+                         System.out.println("Vols encendre el dispositiu de la cuina?");
+                           altaveuCuina = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "c":
+                          System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                           altaveuHabitacioUn = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "d":
+                          System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                           altaveuHabitacioDos = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "e":
+                          System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                           altaveuHabitacioTres = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+
+                        case "f":
+                          System.out.println("Vols encendre el dispositiu del lavabo?");
+                           altaveuLavabo = escaner.nextBoolean();
+                           escaner.nextLine();
+                           break;
+                        default:
+                            break;
+                       }
+                    
+                    case "b": //Aqui mirem totes les habitacions
+
+                       System.out.println("Vols controlar totes les habitacions. ");
+                       System.out.println("Vols encendre tots els altaveus? (true/false)"); //crear boolean 
+                       encendreApagarAltaveus = escaner.nextBoolean();
+                       escaner.nextLine();
+
+                       break;
+
+                    case "c": //aqui mirem el estat de les habitacions
+            
+                    if (encendreApagarAltaveus == true){
+                        altaveuCuina = true;
+                        altaveuSalaEstar = true;
+                        altaveuLavabo = true;
+                        altaveuHabitacioUn = true;
+                        altaveuHabitacioDos = true;
+                        altaveuHabitacioTres = true;
+                    }
+                       System.out.println("Vols veure el estat actual de les habitacions. ");
+                       System.out.println("Els estats son:");
+                       System.out.println("Sala de estar: " + altaveuSalaEstar);
+                       System.out.println("Cuina: " + altaveuCuina);
+                       System.out.println("Habitació 1: " + altaveuHabitacioUn);
+                       System.out.println("Habitació 2: " + altaveuHabitacioDos);
+                       System.out.println("Habitació 3: " + altaveuHabitacioTres);
+                       System.out.println("Lavabo: " + altaveuLavabo);
+
+                      break;
+
+                    case "x":
+                    
+                    System.out.println("Sortint ");
+
+                    default:
+                        break;
+                }
+
+            break; //aqui acaba la temperatura
+
 
             default:
                 break;
