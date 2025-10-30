@@ -16,6 +16,11 @@ public class domotica {
 //public static void a fer una funcio per el dir la habitacio que s'encen
 
     public static void main(String[] args){
+
+      domotica p = new domotica();
+      p.principal();
+    }
+    public void principal(){
    
 Scanner escaner = new Scanner(System.in);
  String queFer, queFerLlums, quinaHabitacio, queFerTemperatura, queFerFinestre, queFerVentilador, queFerAltaveu;
