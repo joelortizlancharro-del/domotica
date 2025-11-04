@@ -1,7 +1,17 @@
 import java.util.Scanner;
 public class domotica {
 
-    public static void habitaciones(){
+
+
+   static boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio, calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo, encendreApagarFinestres, finestresCuina, finestresSalaEstar, finestresLavabo, finestresHabitacioUn, finestresHabitacioDos, finestresHabitacioTres, encendreApagarVentilador, ventiladorCuina, ventiladorSalaEstar, ventiladorLavabo, ventiladorHabitacioUn, ventiladorHabitacioDos, ventiladorHabitacioTres, encendreApagarAltaveus, altaveuCuina, altaveuSalaEstar, altaveuLavabo, altaveuHabitacioUn, altaveuHabitacioDos, altaveuHabitacioTres;
+ 
+    public static void main(String[] args){
+
+      domotica p = new domotica();
+      p.principal();
+    }
+
+    public  void habitaciones(){
       System.out.println("Vols controlar una única habitació, quina vols controlar");
                        System.out.println(" a) Sala d'estar. ");
                        System.out.println(" b) Cuina. ");
@@ -11,22 +21,30 @@ public class domotica {
                        System.out.println(" f) Lavabo. ");
 }
 
-
-
-//public static void a fer una funcio per el dir la habitacio que s'encen
-
-    public static void main(String[] args){
-
-      domotica p = new domotica();
-      p.principal();
-    }
-    public void principal(){
-   
-Scanner escaner = new Scanner(System.in);
- String queFer, queFerLlums, quinaHabitacio, queFerTemperatura, queFerFinestre, queFerVentilador, queFerAltaveu;
-  boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio, calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo, encendreApagarFinestres, finestresCuina, finestresSalaEstar, finestresLavabo, finestresHabitacioUn, finestresHabitacioDos, finestresHabitacioTres, encendreApagarVentilador, ventiladorCuina, ventiladorSalaEstar, ventiladorLavabo, ventiladorHabitacioUn, ventiladorHabitacioDos, ventiladorHabitacioTres, encendreApagarAltaveus, altaveuCuina, altaveuSalaEstar, altaveuLavabo, altaveuHabitacioUn, altaveuHabitacioDos, altaveuHabitacioTres;
  
 
+
+public void encendreLlums(boolean encendreApagarLlums){
+         llumCuina=encendreApagarLlums;
+         llumHabitacioDos = encendreApagarLlums;
+         llumHabitacioTres = encendreApagarLlums;
+         llumHabitacioUn = encendreApagarLlums;
+         llumLavabo = encendreApagarLlums;
+         llumSalaEstar = encendreApagarLlums;
+     
+    }
+  
+
+
+   public void encendreCalefaccio(boolean encendreApagarCalefaccio){
+      calefaccioCuina =encendreApagarCalefaccio;
+   }
+
+    public void principal(){
+   
+
+      Scanner escaner = new Scanner(System.in);
+ String queFer, queFerLlums, quinaHabitacio, queFerTemperatura, queFerFinestre, queFerVentilador, queFerAltaveu;
   encendreApagarLlums= false; //canviar
   llumSalaEstar= false;
   llumCuina = false;
@@ -145,18 +163,12 @@ do{ //aqui diem que dispositiu volem utilitzar
                        encendreApagarLlums = escaner.nextBoolean();
                        escaner.nextLine();
 
+                       encendreLlums(encendreApagarLlums);
                        break;
 
                     case "c": //aqui mirem el estat de les habitacions
             
-                    if (encendreApagarLlums == true){
-                        llumSalaEstar = true;
-                        llumLavabo = true;
-                        llumCuina = true;
-                        llumHabitacioDos = true;
-                        llumHabitacioUn = true;
-                        llumHabitacioTres = true;
-                    }
+         
                        System.out.println("Vols veure el estat actual de les habitacions. ");
                        System.out.println("Els estats son:");
                        System.out.println("Sala de estar: " + llumSalaEstar);
@@ -254,14 +266,6 @@ do{ //aqui diem que dispositiu volem utilitzar
 
                     case "c": //aqui mirem el estat de les habitacions
             
-                    if (encendreApagarCalefaccio == true){
-                        calefaccioSalaEstar = true;
-                        calefaccioCuina = true;
-                        calefaccioHabitacioDos = true;
-                        calefaccioHabitacioTres = true;
-                        calefaccioHabitacioUn = true;
-                        calefaccioLavabo = true;
-                    }
                        System.out.println("Vols veure el estat actual de les habitacions. ");
                        System.out.println("Els estats son:");
                        System.out.println("Sala de estar: " + calefaccioSalaEstar);
@@ -275,7 +279,7 @@ do{ //aqui diem que dispositiu volem utilitzar
 
                     case "x":
                     
-                    System.out.println("Sortint ");
+                    
 
                     default:
                         break;
@@ -381,7 +385,7 @@ do{ //aqui diem que dispositiu volem utilitzar
 
                     case "x":
                     
-                    System.out.println("Sortint ");
+                   
 
                     default:
                         break;
@@ -584,16 +588,21 @@ do{ //aqui diem que dispositiu volem utilitzar
 
                     default:
                         break;
-                }
+             
+     } 
 
-            break; //aqui acaba la temperatura
-
-
-            default:
-                break;
-        }
-     } while (!queFer.equals("x"));
-    
        
-    }    
+
+
+
+
+
+
+    }   
+
+   }while (!queFer.equals("x"));
+
 }
+}
+
+
