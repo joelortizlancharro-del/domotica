@@ -3,8 +3,8 @@ public class domotica {
 
 
 
-   static boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio, calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo, encendreApagarFinestres, finestresCuina, finestresSalaEstar, finestresLavabo, finestresHabitacioUn, finestresHabitacioDos, finestresHabitacioTres, encendreApagarVentilador, ventiladorCuina, ventiladorSalaEstar, ventiladorLavabo, ventiladorHabitacioUn, ventiladorHabitacioDos, ventiladorHabitacioTres, encendreApagarAltaveus, altaveuCuina, altaveuSalaEstar, altaveuLavabo, altaveuHabitacioUn, altaveuHabitacioDos, altaveuHabitacioTres;
- 
+   static boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio,  calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo, encendreApagarFinestres, finestresCuina, finestresSalaEstar, finestresLavabo, finestresHabitacioUn, finestresHabitacioDos, finestresHabitacioTres, encendreApagarVentilador, ventiladorCuina, ventiladorSalaEstar, ventiladorLavabo, ventiladorHabitacioUn, ventiladorHabitacioDos, ventiladorHabitacioTres, encendreApagarAltaveus, altaveuCuina, altaveuSalaEstar, altaveuLavabo, altaveuHabitacioUn, altaveuHabitacioDos, altaveuHabitacioTres;
+   static int calefaccioCuinaInt, calefaccioHabitacioDosInt, calefaccioHabitacioTresInt, calefaccioHabitacioUnInt, calefaccioLavaboInt, calefaccioSalaEstarInt, tempActualSalaEstar, tempActualCuina, tempActualLavabo, tempActualHabitacioUn, tempActualHabitacioDos, tempActualHabitacioTres ;
     public static void main(String[] args){
 
       domotica p = new domotica();
@@ -131,38 +131,51 @@ Scanner escaner = new Scanner(System.in);
                        switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
                         case "a":
                            System.out.println("Vols encendre el dispositiu de la sala d'estar?");
-                           calefaccioSalaEstar = escaner.nextBoolean();
+                           calefaccioSalaEstarInt = escaner.nextInt();
                            escaner.nextLine(); 
-                            break;
-                       
+                        
+                             forTempSalaEstar();
+                         break;
+                     
+                         
                         case "b":
                          System.out.println("Vols encendre el dispositiu de la cuina?");
-                           calefaccioCuina = escaner.nextBoolean();
+                           calefaccioCuinaInt = escaner.nextInt();
                            escaner.nextLine();
+
+                           forTempCuina();
                            break;
 
                         case "c":
                           System.out.println("Vols encendre el dispositiu de la habitació 1?");
-                           calefaccioHabitacioUn = escaner.nextBoolean();
+                           calefaccioHabitacioUnInt = escaner.nextInt();
                            escaner.nextLine();
+
+                           forTempHabitacioUn();
                            break;
 
                         case "d":
                           System.out.println("Vols encendre el dispositiu de la habitació 2?");
-                           calefaccioHabitacioDos = escaner.nextBoolean();
+                           calefaccioHabitacioDosInt = escaner.nextInt();
                            escaner.nextLine();
+
+                           forTempHabitacioDos();
                            break;
 
                         case "e":
                           System.out.println("Vols encendre el dispositiu de la habitació 3?");
-                           calefaccioHabitacioTres = escaner.nextBoolean();
+                           calefaccioHabitacioTresInt = escaner.nextInt();
                            escaner.nextLine();
+
+                           forTempHabitacioTres();
                            break;
 
                         case "f":
                           System.out.println("Vols encendre el dispositiu del lavabo?");
-                           calefaccioLavabo = escaner.nextBoolean();
+                           calefaccioLavaboInt = escaner.nextInt();
                            escaner.nextLine();
+
+                           forTempLavabo();
                            break;
                         default:
                             break;
@@ -183,12 +196,12 @@ Scanner escaner = new Scanner(System.in);
             //falta posar el igual
                        System.out.println("Vols veure el estat actual de les habitacions. ");
                        System.out.println("Els estats son:");
-                       System.out.println("Sala de estar: " + calefaccioSalaEstar);
-                       System.out.println("Cuina: " + calefaccioCuina);
-                       System.out.println("Habitació 1: " + calefaccioHabitacioUn);
-                       System.out.println("Habitació 2: " + calefaccioHabitacioDos);
-                       System.out.println("Habitació 3: " + calefaccioHabitacioTres);
-                       System.out.println("Lavabo: " + calefaccioLavabo);
+                       System.out.println("Sala de estar: " + calefaccioSalaEstarInt);
+                       System.out.println("Cuina: " + calefaccioCuinaInt);
+                       System.out.println("Habitació 1: " + calefaccioHabitacioUnInt);
+                       System.out.println("Habitació 2: " + calefaccioHabitacioDosInt);
+                       System.out.println("Habitació 3: " + calefaccioHabitacioTresInt);
+                       System.out.println("Lavabo: " + calefaccioLavaboInt);
 
                       break;
 
@@ -471,6 +484,136 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
 }
 
 
+
+public void forTempSalaEstar(){
+                             if(calefaccioSalaEstarInt < tempActualSalaEstar){
+                           System.out.println("La temperatura esta baixant.");
+                           for(; calefaccioSalaEstarInt <= tempActualSalaEstar; tempActualSalaEstar--){
+                              System.out.println(tempActualSalaEstar);
+                              }
+                            
+                             System.out.println("La temperatura actual es: " + calefaccioSalaEstarInt);
+                             calefaccioSalaEstarInt = tempActualSalaEstar;
+                        }
+                       
+                        else if(calefaccioSalaEstarInt > tempActualSalaEstar){
+                           System.out.println("La temperatura esta puixant.");
+                           for(; calefaccioSalaEstarInt >= tempActualSalaEstar; tempActualSalaEstar++){
+                              System.out.println(tempActualSalaEstar);
+
+                           }
+                            System.out.println("La temperatura actual es: " + calefaccioSalaEstarInt);
+                            calefaccioSalaEstarInt = tempActualSalaEstar;
+                        }      
+}
+
+public void forTempCuina(){
+                             if(calefaccioCuinaInt < tempActualCuina){
+                           System.out.println("La temperatura esta baixant.");
+                           for(; calefaccioCuinaInt <= tempActualCuina; tempActualCuina--){
+                              System.out.println(tempActualCuina);
+                               }
+                               
+                              System.out.println("La temperatura actual es: " + calefaccioCuinaInt);
+                              calefaccioCuinaInt = tempActualCuina;
+                        }
+                        else if(calefaccioCuinaInt > tempActualCuina){
+                           System.out.println("La temperatura esta puixant.");
+                           for(; calefaccioCuinaInt >= tempActualCuina; tempActualCuina++){
+                              System.out.println(calefaccioCuinaInt);
+                            }
+                             
+                             System.out.println("La temperatura actual es: " + calefaccioCuinaInt);
+                             calefaccioCuinaInt = tempActualCuina;
+                        }      
+}
+
+public void forTempHabitacioUn(){
+                             if(calefaccioHabitacioUnInt < tempActualHabitacioUn){
+                           System.out.println("La temperatura esta baixant.");
+                           for(; calefaccioHabitacioUnInt <= tempActualHabitacioUn; tempActualHabitacioUn--){
+                              System.out.println(tempActualHabitacioUn);
+                               }
+                               
+                              System.out.println("La temperatura actual es: " + calefaccioHabitacioUnInt);
+                              calefaccioHabitacioUnInt = tempActualHabitacioUn;
+                        }
+                        else if(calefaccioHabitacioUnInt > tempActualHabitacioUn){
+                           System.out.println("La temperatura esta puixant.");
+                           for(; calefaccioHabitacioUnInt >= tempActualHabitacioUn; tempActualHabitacioUn++){
+                              System.out.println(calefaccioHabitacioUnInt);
+                            }
+                             
+                             System.out.println("La temperatura actual es: " + calefaccioHabitacioUnInt);
+                             calefaccioHabitacioUnInt = tempActualHabitacioUn;
+                        }      
+}
+
+public void forTempHabitacioDos(){
+                             if(calefaccioHabitacioDosInt < tempActualHabitacioDos){
+                           System.out.println("La temperatura esta baixant.");
+                           for(; calefaccioHabitacioDosInt <= tempActualHabitacioDos; tempActualHabitacioDos--){
+                              System.out.println(tempActualHabitacioDos);
+                               }
+                               
+                              System.out.println("La temperatura actual es: " + calefaccioHabitacioDosInt);
+                              calefaccioHabitacioDosInt = tempActualHabitacioDos;
+                        }
+                        else if(calefaccioHabitacioDosInt > tempActualHabitacioDos){
+                           System.out.println("La temperatura esta puixant.");
+                           for(; calefaccioHabitacioDosInt >= tempActualHabitacioDos; tempActualHabitacioDos++){
+                              System.out.println(calefaccioHabitacioDosInt);
+                            }
+                             
+                             System.out.println("La temperatura actual es: " + calefaccioHabitacioDosInt);
+                             calefaccioHabitacioDosInt = tempActualHabitacioDos;
+                        }      
+}
+
+public void forTempHabitacioTres(){
+                             if(calefaccioHabitacioTresInt < tempActualHabitacioTres){
+                           System.out.println("La temperatura esta baixant.");
+                           for(; calefaccioHabitacioTresInt <= tempActualHabitacioTres; tempActualHabitacioTres--){
+                              System.out.println(tempActualHabitacioTres);
+                               }
+                               
+                              System.out.println("La temperatura actual es: " + calefaccioHabitacioTresInt);
+                              calefaccioHabitacioTresInt = tempActualHabitacioTres;
+                        }
+                        else if(calefaccioHabitacioTresInt > tempActualHabitacioTres){
+                           System.out.println("La temperatura esta puixant.");
+                           for(; calefaccioHabitacioTresInt >= tempActualHabitacioTres; tempActualHabitacioTres++){
+                              System.out.println(calefaccioHabitacioTresInt);
+                            }
+                             
+                             System.out.println("La temperatura actual es: " + calefaccioHabitacioTresInt);
+                             calefaccioHabitacioTresInt = tempActualHabitacioTres;
+                        }      
+}
+
+public void forTempLavabo(){
+                             if(calefaccioLavaboInt < tempActualLavabo){
+                           System.out.println("La temperatura esta baixant.");
+                           for(; calefaccioLavaboInt <= tempActualLavabo; tempActualLavabo--){
+                              System.out.println(tempActualLavabo);
+                               }
+                               
+                              System.out.println("La temperatura actual es: " + calefaccioLavaboInt);
+                              calefaccioLavaboInt = tempActualLavabo;
+                        }
+                        else if(calefaccioLavaboInt > tempActualLavabo){
+                           System.out.println("La temperatura esta puixant.");
+                           for(; calefaccioLavaboInt >= tempActualLavabo; tempActualLavabo++){
+                              System.out.println(calefaccioLavaboInt);
+                            }
+                             
+                             System.out.println("La temperatura actual es: " + calefaccioLavaboInt);
+                             calefaccioLavaboInt = tempActualLavabo;
+                        }      
+}
+
+
+
  public void encendreLlums(boolean encendreApagarLlums){
        
          llumCuina=encendreApagarLlums;
@@ -528,6 +671,7 @@ public void principal(){
 
      
  String queFer, queFerLlums, quinaHabitacio, queFerTemperatura, queFerFinestre, queFerVentilador, queFerAltaveu;
+
   encendreApagarLlums= false; //canviar
   llumSalaEstar= false;
   llumCuina = false;
@@ -568,6 +712,21 @@ public void principal(){
   ventiladorHabitacioDos = false;
   ventiladorHabitacioTres = false;
 
+   //canviar
+  calefaccioCuinaInt = 20;
+  calefaccioHabitacioDosInt = 20;
+  calefaccioHabitacioTresInt = 20;
+  calefaccioHabitacioUnInt = 20;
+  calefaccioLavaboInt = 20;
+  calefaccioSalaEstarInt = 20;
+
+  tempActualCuina = 20;
+  tempActualHabitacioDos = 20;
+  tempActualHabitacioTres = 20;
+  tempActualHabitacioUn = 20;
+  tempActualLavabo = 20;
+  tempActualSalaEstar = 20;
+
   queFerLlums = "a";
   quinaHabitacio = "a";
   queFerTemperatura = "a";
@@ -607,22 +766,23 @@ do{ //aqui diem que dispositiu volem utilitzar
         
 
             
-         
-               case "c":
+             case "c": //aqui mirem finestres
 
                gestionaFinestres(queFerFinestre, quinaHabitacio);
 
-            break; //aqui acaba la temperatura
+            break; //aqui acaba les finestres
         
 
 
-            case "d":
+            case "d": //aqui mirem ventiladors
             
               gestionaVentiladors(queFerVentilador, quinaHabitacio);
 
             break; //aqui acaba els ventiladors
 
-            case "e":
+           
+           
+            case "e"://aqui mirem altaveus
 
             gestionaAltaveu(queFerAltaveu, quinaHabitacio);
 
