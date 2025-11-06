@@ -15,7 +15,7 @@ public class domotica {
 Scanner escaner = new Scanner(System.in);
 
 
-
+//Metode per retallar linies i fer mes net
 public void escollirHabitacio(String quina){
      quina = escaner.nextLine();
                        if( quina.equals("")){
@@ -23,9 +23,22 @@ public void escollirHabitacio(String quina){
                        }
                      else if( !quina.equals("a") && !quina.equals("b") && !quina.equals("c") && !quina.equals("d") && !quina.equals("e") && !quina.equals("f")){
                       System.out.println("Has de utilitzar una a, b, c, d, e, f.");
+                     
                       }
 }
+//Metode per retallar linies i fer mes net
+public void errorInici(){
+      if( queFer.equals("")){
+                    System.out.println("No pots deixar buit el nom.");
+   }
+   else if( !queFer.equals("a") && !queFer.equals("b") && !queFer.equals("c") && !queFer.equals("d") && !queFer.equals("e") ){
+    System.out.println("Has de utilitzar una a, b, c, d, e.");
+   }
+ 
+}
+
 public void analitzarEntrada(String que){
+   
    if( que.equals("")){
                     System.out.println("No pots deixar buit el nom.");
                   }
@@ -33,7 +46,8 @@ public void analitzarEntrada(String que){
                     System.out.println("Has de utilitzar una a, b, c, d, x.");
                     }
 }
- public  void habitaciones(){
+ //Metode per retallar linies i fer mes net
+public  void habitaciones(){
       System.out.println("Vols controlar una única habitació, quina vols controlar");
                        System.out.println(" a) Sala d'estar. ");
                        System.out.println(" b) Cuina. ");
@@ -43,8 +57,9 @@ public void analitzarEntrada(String que){
                        System.out.println(" f) Lavabo. ");
 }
 
+//Aqui tenim els metodes grans de tot el script
  public void gestionaLlums(String queFerLlums, String quinaHabitacio){
-     System.out.println("Vols canviar les llums, que opció vols ara? ");
+     System.out.println("Vols canviar les llums, que opció vols ara? "); //Preguntem opcio
                 System.out.println(" a) Controlar una habitació. ");
                 System.out.println(" b) Controlar totes les habitacions ");
                 System.out.println(" c) Mostrar estat actual de les llums .");
@@ -59,14 +74,15 @@ public void analitzarEntrada(String que){
                     case "a":
 
                        habitaciones();
-                       quinaHabitacio = escaner.nextLine();
+                      
                       escollirHabitacio(quinaHabitacio);
+                     
                       
                       
                        switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
                         case "a":
                          try {
-                           System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                           System.out.println("Vols encendre el dispositiu de la sala d'estar?(true/false)");
                            llumSalaEstar = escaner.nextBoolean();
                            escaner.nextLine(); 
                            } 
@@ -77,7 +93,7 @@ public void analitzarEntrada(String que){
                            break;
                        
                         case "b":
-                       try {  System.out.println("Vols encendre el dispositiu de la cuina?");
+                       try {  System.out.println("Vols encendre el dispositiu de la cuina?(true/false)");
                            
                               llumCuina = escaner.nextBoolean();
                            escaner.nextLine();
@@ -91,7 +107,7 @@ public void analitzarEntrada(String que){
                         case "c":
                           
                            try{
-                          System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                          System.out.println("Vols encendre el dispositiu de la habitació 1?(true/false)");
                               llumHabitacioUn = escaner.nextBoolean();
                            escaner.nextLine();
                            }
@@ -103,7 +119,7 @@ public void analitzarEntrada(String que){
                         case "d":
                           
                           try{
-                          System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                          System.out.println("Vols encendre el dispositiu de la habitació 2?(true/false)");
                            llumHabitacioDos = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -115,7 +131,7 @@ public void analitzarEntrada(String que){
                         case "e":
                           
                           try{
-                             System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                             System.out.println("Vols encendre el dispositiu de la habitació 3?(true/false)");
                            llumHabitacioTres = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -127,7 +143,7 @@ public void analitzarEntrada(String que){
                         case "f":
                        
                           try{
-                              System.out.println("Vols encendre el dispositiu del lavabo?");
+                              System.out.println("Vols encendre el dispositiu del lavabo?(true/false)");
                            llumLavabo = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -169,7 +185,7 @@ public void analitzarEntrada(String que){
                       break;
 
 
-                    case "d":
+                    case "d": //Aqui seleccionem la hora en la que les llums s'encenen
                      System.out.println("A quina hora vols temporitzar la hora?");
                      try{
                      horaDesitjadaEncendreLlums= escaner.nextInt();
@@ -196,7 +212,7 @@ public void analitzarEntrada(String que){
   
                      break;
 
-                    case "x":
+                    case "x": //sortir de la app
                     
                     sortirApp();
 
@@ -209,7 +225,7 @@ public void analitzarEntrada(String que){
  
  public void gestionaCalefaccio(String queFerTemperatura, String quinaHabitacio){
    
-                System.out.println("Vols canviar la calefacció, quina opció vols ara? "); //Haurem de preguntar que temperatura
+                System.out.println("Vols canviar la calefacció, quina opció vols ara? "); //Preguntem que volem fer
                 System.out.println(" a) Canviar calefacció de una habitació. ");      
                 System.out.println(" b) Canviar calefacció de totes les habitacions. ");
                 System.out.println(" c) Mostrar estat actual de la calefacció. ");
@@ -225,7 +241,7 @@ public void analitzarEntrada(String que){
                        quinaHabitacio = escaner.nextLine();
                        escollirHabitacio(quinaHabitacio);
                       
-                       switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
+                       switch (quinaHabitacio) { //aqui selecciones la temperatura de la habitacio seleccionada
                         case "a":
                           try{
                            System.out.println("Vols canviar la temperatura de la sala d'estar.");
@@ -309,7 +325,7 @@ public void analitzarEntrada(String que){
                     case "b": //Aqui mirem totes les habitacions
                       try{
                          System.out.println("Vols canviar la temperatura de totes les habitacions. ");
-                       System.out.println("Quina teperatura vols posar en la casa?"); //crear boolean 
+                       System.out.println("Quina teperatura vols posar en la casa?"); 
                        encendreApagarCalefaccioInt = escaner.nextInt();
                        escaner.nextLine();
 
@@ -321,7 +337,7 @@ public void analitzarEntrada(String que){
                        break;
 
                     case "c": //aqui mirem el estat de les habitacions
-            //falta posar el igual
+            
                        System.out.println("Vols veure el estat actual de les habitacions. ");
                        System.out.println("Els estats son:");
                        System.out.println("Sala de estar: " + calefaccioSalaEstarInt);
@@ -333,7 +349,7 @@ public void analitzarEntrada(String que){
 
                       break;
 
-                    case "x":
+                    case "x": //tanca app
                     
                     sortirApp();
 
@@ -345,7 +361,7 @@ public void analitzarEntrada(String que){
 
  public void gestionaFinestres(String queFerFinestre, String quinaHabitacio){
    
-                System.out.println("Vols canviar les finestres, quina opció vols ara? ");
+                System.out.println("Vols canviar les finestres, quina opció vols ara? "); //preguntem que volem fer
                 System.out.println(" a) Canviar finestres de una habitació. ");
                 System.out.println(" b) Canviar finestres de totes les habitacions. ");
                 System.out.println(" c) Mostrar estat actual de les finestres. ");
@@ -361,10 +377,10 @@ public void analitzarEntrada(String que){
                        quinaHabitacio = escaner.nextLine();
                        escollirHabitacio(quinaHabitacio);
                       
-                       switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
+                       switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la finestre de la habitacio seleccionada
                         case "a":
                           try{
-                            System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                            System.out.println("Vols encendre el dispositiu de la sala d'estar?(true/false)");
                            finestresSalaEstar = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -375,7 +391,7 @@ public void analitzarEntrada(String que){
                        
                         case "b":
                         try{
-                           System.out.println("Vols encendre el dispositiu de la cuina?");
+                           System.out.println("Vols encendre el dispositiu de la cuina?(true/false)");
                            finestresCuina = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -386,7 +402,7 @@ public void analitzarEntrada(String que){
 
                         case "c":
                          try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 1?(true/false)");
                            finestresHabitacioUn = escaner.nextBoolean();
                            escaner.nextLine();
                          }
@@ -397,7 +413,7 @@ public void analitzarEntrada(String que){
 
                         case "d":
                          try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 2?(true/false)");
                            finestresHabitacioDos = escaner.nextBoolean();
                            escaner.nextLine();
                          }
@@ -408,7 +424,7 @@ public void analitzarEntrada(String que){
 
                         case "e":
                         try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 3?(true/false)");
                            finestresHabitacioTres = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -419,7 +435,7 @@ public void analitzarEntrada(String que){
 
                         case "f":
                           try{
-                            System.out.println("Vols encendre el dispositiu del lavabo?");
+                            System.out.println("Vols encendre el dispositiu del lavabo?(true/false)");
                            finestresLavabo = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -434,15 +450,16 @@ public void analitzarEntrada(String que){
                     case "b": //Aqui mirem totes les habitacions
                        try{
                          System.out.println("Vols controlar totes les habitacions. ");
-                       System.out.println("Vols encendre totes les finestres? (true/false)"); //crear boolean 
+                       System.out.println("Vols encendre totes les finestres? (true/false)");
                        encendreApagarFinestres = escaner.nextBoolean();
                        escaner.nextLine();
-                       }
+                      encendreFinestre(encendreApagarFinestres);
+                     }
                        catch (Exception InputMismatchException) {
                            System.out.println("Has de dir true o false.");
                          }
                        
-                       encendreFinestre(encendreApagarFinestres);
+                       
                        break;
 
                     case "c": //aqui mirem el estat de les habitacions
@@ -460,7 +477,7 @@ public void analitzarEntrada(String que){
 
                       break;
 
-                    case "x":
+                    case "x": //tanquem app
                     
                    sortirApp();
 
@@ -471,7 +488,7 @@ public void analitzarEntrada(String que){
  
 public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
    
-                System.out.println("Vols canviar ventiladors, quina opció vols ara? ");
+                System.out.println("Vols canviar ventiladors, quina opció vols ara? "); //diem que volem fer
                 System.out.println(" a) Canviar ventilador de una habitació. ");
                 System.out.println(" b) Canviar el ventilador de totes les habitacions. ");
                 System.out.println(" c) Monstrar estat actual dels ventiladors. ");
@@ -490,7 +507,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
                        switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
                         case "a":
                           try{
-                            System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                            System.out.println("Vols encendre el dispositiu de la sala d'estar?(true/false)");
                            ventiladorSalaEstar = escaner.nextBoolean();
                            escaner.nextLine(); 
                           }
@@ -501,7 +518,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
                        
                         case "b":
                          try{
-                           System.out.println("Vols encendre el dispositiu de la cuina?");
+                           System.out.println("Vols encendre el dispositiu de la cuina?(true/false)");
                            ventiladorCuina = escaner.nextBoolean();
                            escaner.nextLine();
                          }
@@ -512,7 +529,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
 
                         case "c":
                          try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 1?(true/false)");
                            ventiladorHabitacioUn = escaner.nextBoolean();
                            escaner.nextLine();
                          }
@@ -523,7 +540,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
 
                         case "d":
                          try{
-                             System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                             System.out.println("Vols encendre el dispositiu de la habitació 2?(true/false)");
                            ventiladorHabitacioDos = escaner.nextBoolean();
                            escaner.nextLine();
                          }
@@ -534,7 +551,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
 
                         case "e":
                           try{
-                            System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                            System.out.println("Vols encendre el dispositiu de la habitació 3?(true/false)");
                            ventiladorHabitacioTres = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -545,7 +562,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
 
                         case "f":
                           try{
-                           System.out.println("Vols encendre el dispositiu del lavabo?");
+                           System.out.println("Vols encendre el dispositiu del lavabo?(true/false)");
                            ventiladorLavabo = escaner.nextBoolean();
                            escaner.nextLine();
                           }
@@ -560,7 +577,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
                     case "b": //Aqui mirem totes les habitacions
                      try{
                         System.out.println("Vols controlar totes les habitacions. ");
-                       System.out.println("Vols encendre tots els ventiladors? (true/false)"); //crear boolean 
+                       System.out.println("Vols encendre tots els ventiladors? (true/false)"); 
                        encendreApagarVentilador = escaner.nextBoolean();
                        escaner.nextLine();
                      encendreVentilador(encendreApagarVentilador);
@@ -586,9 +603,9 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
 
                       break;
 
-                    case "x":
+                    case "x": //tancar app
                     
-                    System.out.println("Sortint ");
+                   sortirApp();
 
                     default:
                         break;
@@ -596,7 +613,7 @@ public void gestionaVentiladors(String queFerVentilador, String quinaHabitacio){
 }
 
 public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
-                   System.out.println("Vols Canviar altaveus, quina opció vols ara? ");
+                   System.out.println("Vols Canviar altaveus, quina opció vols ara? "); //diem que volem fer
                 System.out.println(" a) Vols canviar el altaveu de una habitació. ");
                 System.out.println(" b) Vols canviar el altaveu de totes les habitacions. ");
                 System.out.println(" c) Mostrar estat actual del altaveus. ");
@@ -616,7 +633,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
                        switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
                         case "a":
                         try{
-                            System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                            System.out.println("Vols encendre el dispositiu de la sala d'estar?(true/false)");
                            altaveuSalaEstar = escaner.nextBoolean();
                            escaner.nextLine(); 
                         } 
@@ -627,7 +644,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
                        
                         case "b":
                         try{
-                            System.out.println("Vols encendre el dispositiu de la cuina?");
+                            System.out.println("Vols encendre el dispositiu de la cuina?(true/false)");
                            altaveuCuina = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -638,7 +655,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
 
                         case "c":
                         try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 1?(true/false)");
                            altaveuHabitacioUn = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -649,7 +666,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
 
                         case "d":
                         try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 2?(true/false)");
                            altaveuHabitacioDos = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -660,7 +677,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
 
                         case "e":
                         try{
-                           System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                           System.out.println("Vols encendre el dispositiu de la habitació 3?(true/false)");
                            altaveuHabitacioTres = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -671,7 +688,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
 
                         case "f":
                         try{
-                           System.out.println("Vols encendre el dispositiu del lavabo?");
+                           System.out.println("Vols encendre el dispositiu del lavabo?(true/false)");
                            altaveuLavabo = escaner.nextBoolean();
                            escaner.nextLine();
                         }
@@ -686,7 +703,7 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
                     case "b": //Aqui mirem totes les habitacions
                         try{
                            System.out.println("Vols controlar totes les habitacions. ");
-                       System.out.println("Vols encendre tots els altaveus? (true/false)"); //crear boolean 
+                       System.out.println("Vols encendre tots els altaveus? (true/false)"); 
                        encendreApagarAltaveus = escaner.nextBoolean();
                        escaner.nextLine();
 
@@ -710,18 +727,18 @@ public void gestionaAltaveu(String queFerAltaveu, String quinaHabitacio){
 
                       break;
 
-                    case "x":
+                    case "x": //aqui sortir app
                     
-                    System.out.println("Sortint ");
+                    sortirApp();
 
                     default:
                         break;
              
      } 
 }
+//acabem el metodes grans
 
-
-
+//creem el metodes per tots el for de la temperatura, cada for es una habitacio diferent
 public void forTempSalaEstar(){
                              if(calefaccioSalaEstarInt < tempActualSalaEstar){
                            System.out.println("La temperatura esta baixant.");
@@ -848,9 +865,9 @@ public void forTempLavabo(){
                              calefaccioLavaboInt = tempActualLavabo;
                         }      
 }
+//acaben el metodes de for de cada habitacio 
 
-
-
+//aqui son els metodes que fan que la variable de encendre totes le habitacions funcioni correctament
  public void encendreLlums(boolean encendreApagarLlums){
        
          llumCuina=encendreApagarLlums;
@@ -862,6 +879,7 @@ public void forTempLavabo(){
      
     }
   
+//en aquesta en concret es un int ja que es per el for i la temperatura
  public void encendreCalefaccio(int encendreApagarCalefaccioInt){
       calefaccioCuinaInt = encendreApagarCalefaccioInt;
       calefaccioHabitacioDosInt = encendreApagarCalefaccioInt;
@@ -870,6 +888,7 @@ public void forTempLavabo(){
       calefaccioLavaboInt = encendreApagarCalefaccioInt;
       calefaccioSalaEstarInt = encendreApagarCalefaccioInt;
    }
+
 
  public void encendreFinestre(boolean encendreApagarFinestres){
    finestresCuina = encendreApagarFinestres;
@@ -897,7 +916,9 @@ public void forTempLavabo(){
    ventiladorLavabo = encendreApagarVentilador;
    ventiladorSalaEstar = encendreApagarVentilador;
  }
-
+//acabem els metodes per que funcioni correctament la variable de encendre totes les habitacions
+ 
+ //metode de Syso que tanca la app
  public void sortirApp(){
       System.out.println("Estas sortint");
    }
@@ -905,7 +926,7 @@ public void forTempLavabo(){
 
 
 
-
+//comença el metode que conte tot
 public void principal(){
    
 
