@@ -4,7 +4,7 @@ public class domotica {
 
 
    static boolean encendreApagarLlums, llumSalaEstar, llumCuina, llumHabitacioUn, llumHabitacioDos, llumHabitacioTres, llumLavabo, encendreApagarCalefaccio,  calefaccioSalaEstar, calefaccioCuina, calefaccioHabitacioUn, calefaccioHabitacioDos, calefaccioHabitacioTres, calefaccioLavabo, encendreApagarFinestres, finestresCuina, finestresSalaEstar, finestresLavabo, finestresHabitacioUn, finestresHabitacioDos, finestresHabitacioTres, encendreApagarVentilador, ventiladorCuina, ventiladorSalaEstar, ventiladorLavabo, ventiladorHabitacioUn, ventiladorHabitacioDos, ventiladorHabitacioTres, encendreApagarAltaveus, altaveuCuina, altaveuSalaEstar, altaveuLavabo, altaveuHabitacioUn, altaveuHabitacioDos, altaveuHabitacioTres;
-   static int calefaccioCuinaInt, calefaccioHabitacioDosInt, calefaccioHabitacioTresInt, calefaccioHabitacioUnInt, calefaccioLavaboInt, calefaccioSalaEstarInt, tempActualSalaEstar, tempActualCuina, tempActualLavabo, tempActualHabitacioUn, tempActualHabitacioDos, tempActualHabitacioTres ;
+   static int calefaccioCuinaInt, calefaccioHabitacioDosInt, calefaccioHabitacioTresInt, calefaccioHabitacioUnInt, calefaccioLavaboInt, calefaccioSalaEstarInt, tempActualSalaEstar, tempActualCuina, tempActualLavabo, tempActualHabitacioUn, tempActualHabitacioDos, tempActualHabitacioTres, encendreApagarCalefaccioInt ;
     public static void main(String[] args){
 
       domotica p = new domotica();
@@ -114,9 +114,9 @@ Scanner escaner = new Scanner(System.in);
  
  public void gestionaCalefaccio(String queFerTemperatura, String quinaHabitacio){
    
-                System.out.println("Vols encendre la calefacció, quina opció vols ara? "); //Haurem de preguntar que temperatura
-                System.out.println(" a) Encendre calefacció de una habitació. ");      
-                System.out.println(" b) Encendre calefacció de totes les habitacions. ");
+                System.out.println("Vols canviar la calefacció, quina opció vols ara? "); //Haurem de preguntar que temperatura
+                System.out.println(" a) Canviar calefacció de una habitació. ");      
+                System.out.println(" b) Canviar calefacció de totes les habitacions. ");
                 System.out.println(" c) Mostrar estat actual de la calefacció. ");
                 System.out.println(" x) Sortir. ");
 
@@ -130,7 +130,7 @@ Scanner escaner = new Scanner(System.in);
                       
                        switch (quinaHabitacio) { //aqui selecciones si vols encendre o apagar la llum de la habitacio seleccionada
                         case "a":
-                           System.out.println("Vols encendre el dispositiu de la sala d'estar?");
+                           System.out.println("Vols canviar la temperatura de la sala d'estar.");
                            calefaccioSalaEstarInt = escaner.nextInt();
                            escaner.nextLine(); 
                         
@@ -139,7 +139,7 @@ Scanner escaner = new Scanner(System.in);
                      
                          
                         case "b":
-                         System.out.println("Vols encendre el dispositiu de la cuina?");
+                         System.out.println("Vols canviar la temperatura de la cuina.");
                            calefaccioCuinaInt = escaner.nextInt();
                            escaner.nextLine();
 
@@ -147,7 +147,7 @@ Scanner escaner = new Scanner(System.in);
                            break;
 
                         case "c":
-                          System.out.println("Vols encendre el dispositiu de la habitació 1?");
+                          System.out.println("Vols canviar la temperatura de la habitació 1.");
                            calefaccioHabitacioUnInt = escaner.nextInt();
                            escaner.nextLine();
 
@@ -155,7 +155,7 @@ Scanner escaner = new Scanner(System.in);
                            break;
 
                         case "d":
-                          System.out.println("Vols encendre el dispositiu de la habitació 2?");
+                          System.out.println("Vols canviar la temperatura de la habitació 2.");
                            calefaccioHabitacioDosInt = escaner.nextInt();
                            escaner.nextLine();
 
@@ -163,7 +163,7 @@ Scanner escaner = new Scanner(System.in);
                            break;
 
                         case "e":
-                          System.out.println("Vols encendre el dispositiu de la habitació 3?");
+                          System.out.println("Vols canviar la temperatura de la habitació 3.");
                            calefaccioHabitacioTresInt = escaner.nextInt();
                            escaner.nextLine();
 
@@ -171,7 +171,7 @@ Scanner escaner = new Scanner(System.in);
                            break;
 
                         case "f":
-                          System.out.println("Vols encendre el dispositiu del lavabo?");
+                          System.out.println("Vols canviar la temperatura del lavabo.");
                            calefaccioLavaboInt = escaner.nextInt();
                            escaner.nextLine();
 
@@ -183,12 +183,12 @@ Scanner escaner = new Scanner(System.in);
                     break;
                     case "b": //Aqui mirem totes les habitacions
 
-                       System.out.println("Vols controlar totes les habitacions. ");
-                       System.out.println("Vols encendre totes les calefaccions (true/false)"); //crear boolean 
-                       encendreApagarCalefaccio = escaner.nextBoolean();
+                       System.out.println("Vols canviar la temperatura de totes les habitacions. ");
+                       System.out.println("Quina teperatura vols posar en la casa?"); //crear boolean 
+                       encendreApagarCalefaccioInt = escaner.nextInt();
                        escaner.nextLine();
 
-                       encendreCalefaccio(encendreApagarCalefaccio);
+                       encendreCalefaccio(encendreApagarCalefaccioInt);
 
                        break;
 
@@ -625,13 +625,13 @@ public void forTempLavabo(){
      
     }
   
- public void encendreCalefaccio(boolean encendreApagarCalefaccio){
-      calefaccioCuina = encendreApagarCalefaccio;
-      calefaccioHabitacioDos = encendreApagarCalefaccio;
-      calefaccioHabitacioTres = encendreApagarCalefaccio;
-      calefaccioHabitacioUn = encendreApagarCalefaccio;
-      calefaccioLavabo = encendreApagarCalefaccio;
-      calefaccioSalaEstar = encendreApagarCalefaccio;
+ public void encendreCalefaccio(int encendreApagarCalefaccioInt){
+      calefaccioCuinaInt = encendreApagarCalefaccioInt;
+      calefaccioHabitacioDosInt = encendreApagarCalefaccioInt;
+      calefaccioHabitacioTresInt = encendreApagarCalefaccioInt;
+      calefaccioHabitacioUnInt = encendreApagarCalefaccioInt;
+      calefaccioLavaboInt = encendreApagarCalefaccioInt;
+      calefaccioSalaEstarInt = encendreApagarCalefaccioInt;
    }
 
  public void encendreFinestre(boolean encendreApagarFinestres){
@@ -672,7 +672,9 @@ public void principal(){
      
  String queFer, queFerLlums, quinaHabitacio, queFerTemperatura, queFerFinestre, queFerVentilador, queFerAltaveu;
 
-  encendreApagarLlums= false; //canviar
+  //Iniciar les variables
+ 
+  encendreApagarLlums= false; 
   llumSalaEstar= false;
   llumCuina = false;
   llumHabitacioUn = false;
@@ -734,9 +736,9 @@ public void principal(){
   queFerFinestre ="a";
   queFerVentilador = "a";
 
+//Aqui acaba el iniciar les variables
 
-
-do{ //aqui diem que dispositiu volem utilitzar
+do{ //Començem bucle
   
      System.out.println("Que vols fer?");
      System.out.println(" a) Canviar llums. ");
